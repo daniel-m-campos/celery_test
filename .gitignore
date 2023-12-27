@@ -1,0 +1,4 @@
+# FILEPATH: /Users/danielmcampos/work/celery_test/.gitignore
+*.pyc
+__pycache__/
+venv/
