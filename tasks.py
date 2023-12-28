@@ -1,8 +1,12 @@
+import os
+
 from celery import Celery
 
-REDIS_HOST = "redis://10.0.0.21:6379/0"
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = os.getenv("REDIS_PORT", "6379")
+BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
 
-app = Celery("tasks", broker=REDIS_HOST, backend=REDIS_HOST)
+app = Celery("tasks", broker=BROKER_URL, backend=BROKER_URL)
 
 
 @app.task
